@@ -1,0 +1,18 @@
+import { Link } from 'react-router-dom'
+import logo from '../../assets/logo1.png'
+import "./styles.scss"
+
+export const Header = () => {
+    return (
+        <header className="header">
+            <img src={logo} alt="logo" className="header_logo" />
+
+            <nav className="header_nav">
+                <ul className="header_nav--ul">
+                    <Link to="/home" className="header_nav--item"><li >Inicio</li></Link>
+                    <Link to="/movies" className="header_nav--item"><li >Peliculas</li></Link>
+                </ul>
+            </nav>
+        </header>
+    )
+}

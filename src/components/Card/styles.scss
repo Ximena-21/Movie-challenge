@@ -1,0 +1,65 @@
+@import '../../generics.scss';
+
+.card{
+    // width: 50%;
+    // min-width: 100px;
+    // max-width: 150px;
+    // min-height: 120px;
+    // max-height: 180px;
+
+    &_front{
+        width: 50%;
+        min-width: 100px;
+        max-width: 150px;
+        min-height: 120px;
+        max-height: 180px;
+        // @include center-perfect;
+        @include flex-column-center;
+        // background: rgb(214, 114, 114);
+        box-shadow: rgb(0 0 0 / 56%) 0px 3px 8px;
+        color: white;
+        border-radius: 10px;
+
+        &--title{
+            color: aliceblue;
+        }
+        &--img{
+            width: 100%;
+        }
+    }
+    &_back{
+        width: 50%;
+        min-width: 100px;
+        max-width: 150px;
+        min-height: 120px;
+        max-height: 180px;
+        @include flex-column-center;
+        gap: 10px;
+        box-shadow: rgb(0 0 0 / 56%) 0px 3px 8px;
+        background: $secundary-color;
+        border-radius: 10px;
+        padding: 5px;
+
+        &--title{
+            font-size: 10px;
+            color: $quaternary-color;
+            text-align: center;
+        }
+        &--characteristics{
+            width: 100%;
+            @include flex-column-center;
+            // justify-content:space-between;
+        }
+        &--item{
+            font-size: 10px;
+            color: #fff;
+            font-weight: 400;
+        }
+        &--description{
+            color: #fff;
+            font-size: 10px;
+            font-weight: 200;
+        }
+    }
+
+}

@@ -1,0 +1,64 @@
+@import '../../generics.scss';
+
+.home{
+    width: 100%;
+    height: 100%;
+
+    @include flex-column-center;
+    justify-content:flex-start;
+
+    background: url(./src/assets/bck1.jpg) no-repeat top right 50%;
+
+    &_container{
+        width: 90%;
+        max-width: 800px;
+
+        margin: auto 0;
+    }
+
+    &_welcome{
+         color: #fff;
+    }
+
+    &_text{
+        width: 80%;
+        color: #fff;
+
+        font-weight: 300;
+
+        margin: 30px 0 30px;
+    }
+
+    &_btn{
+        padding: 5px 15px;
+
+        background: $quaternary-color;
+        
+        color: #fff;
+
+        border: none;
+
+        box-shadow: 0px 0px 3px 1px rgb(90 90 90);
+
+        cursor: pointer;
+
+        &:hover{
+            background: #d2304b;
+        }
+
+        &:active{
+            background: #ffffff;
+            color: $quaternary-color;
+            font-weight: 600;
+            border: 1px solid #d2304b;
+        }
+    }
+}
+
+@media (min-width: 450px) {
+    .home{
+        &_welcome{
+            font-size: 42px;
+        }
+    }
+}
