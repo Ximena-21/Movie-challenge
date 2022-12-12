@@ -2,8 +2,10 @@ export const getMovies = async () => {
     const urlApi = "https://www.omdbapi.com/"
     const apiKey = 'a487a7d9'
     const title = 'of the'
-    const url = `${urlApi}?apikey=${apiKey}&s=${title}&page=1`
+    const url = `${urlApi}?apikey=${apiKey}&s=${title}&type=movie&page=8`
 
+
+    //https://www.omdbapi.com/?apikey=####&s=love&type=series&page=8
     const response = await fetch(url)
 
     //http://www.omdbapi.com/?i=tt3896198&apikey=a487a7d9
