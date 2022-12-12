@@ -3,24 +3,23 @@ import { Card } from "../../components/Card/Card"
 import { Header } from "../../components/Header/Header"
 import { Pagination } from "../../components/Pagination/Pagination"
 import { getData } from "../../lib/request"
-import './styles.scss'
 
 
-export function Movies() {
+export function Series() {
 
-    const [movies, setMovies] = useState([])
+    const [series, setSeries] = useState([])
 
-    async function getListMovies() {
-        const dataMovies = await getData('of the',1, 'movie')
-        setMovies(dataMovies);
+    async function getListSeries() {
+        const dataSeries = await getData('of the',1, 'series')
+        setSeries(dataSeries);
     }
     useEffect(() => {
 
-        getListMovies()
+        getListSeries()
 
     }, [])
 
-    console.log(movies);
+    console.log(series);
 
 
     return (
@@ -37,14 +36,14 @@ export function Movies() {
             </div>
 
             {
-                movies != []? 
+               series != []? 
                 (
                     <div className="movies_container">
                     {
-                        movies.map((movie) => {
+                       series.map((serie) => {
                             return (
     
-                                <Card element={movie} />
+                                <Card element={serie} />
                             )
                         })
                     }

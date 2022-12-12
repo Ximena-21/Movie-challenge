@@ -1,0 +1,46 @@
+@import '../../generics.scss';
+
+
+.pageNumbering {
+    width: 80%;
+    max-width: 500px;
+    @include flex-row-center;
+    gap: 20px;
+    margin-top: 40px;
+
+    &_box {
+        // padding: 8px;
+        // // border: 1px solid $primary-color;
+        // color: #fff;
+        // border-radius: 5px;
+        // box-shadow: #16213e 1px 1px 3px 0px;
+        // cursor: pointer;
+        // font-weight: 100;
+        border: 1px solid #d2304b;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: #4e4e4e 1px 1px 3px 0px;
+        // box-shadow: #16213e 1px 1px 3px 0px;
+        cursor: pointer;
+         @include center-perfect;
+    }
+
+    &_number {
+        @include flex-row-center;
+        gap: 5px;
+    }
+
+    &_previus,
+    &_next {
+        background: #16213e87;
+        //#e9456061
+
+        &:hover{
+            background:#e945608a;
+        }
+
+        &--img {
+            width: 24px;
+        }
+    }
+}

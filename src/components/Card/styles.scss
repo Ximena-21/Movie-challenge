@@ -13,8 +13,8 @@
         max-width: 150px;
         min-height: 120px;
         max-height: 180px;
-        // @include center-perfect;
-        @include flex-column-center;
+        @include center-perfect;
+        // @include flex-column-center;
         // background: rgb(214, 114, 114);
         box-shadow: rgb(0 0 0 / 56%) 0px 3px 8px;
         color: white;
@@ -64,4 +64,12 @@
 
 }
 
+.react-card-front, .react-card-back{
+    @include center-perfect;
+}
+
+.react-card-flipper{
+    min-width: 80px;
+    max-width: 120px;
+}
 //intentando pushear al repo

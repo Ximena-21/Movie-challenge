@@ -1,8 +1,10 @@
-export const getMovies = async () => {
+export const getData = async (tittle, page, type) => {
     const urlApi = "https://www.omdbapi.com/"
     const apiKey = 'a487a7d9'
-    const title = 'of the'
-    const url = `${urlApi}?apikey=${apiKey}&s=${title}&page=1`
+    // const title = 'of the'
+    const url = `${urlApi}?apikey=${apiKey}&s=${tittle}&type=${type}&page=${page}`
+
+    //https://www.omdbapi.com/?apikey=####&s=love&type=series&page=8
 
     const response = await fetch(url)
 
