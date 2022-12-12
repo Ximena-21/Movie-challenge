@@ -1,25 +1,85 @@
 @import '../../generics.scss';
 
-.movies{
+.movies {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
 
     @include flex-column-center;
-    justify-content:flex-start;
+    justify-content: flex-start;
 
-    background: $secundary-color;
+    background: #16213ee8;
 
-    &_filter{
-        margin: 60px 0 40px;
-    } 
 
-    &_container{
-        width: 80%;
-        max-width: 900px;
+    &_filter {
+        width: 50%;
+        min-width: 100px;
+        max-width: 200px;
+        margin: 30px 0;
+        padding: 5px 10px;
+        border: 1px solid #061741;
+        border-radius: 20px;
+        background: none;
+        color: #fff;
+        outline: none;
+        position: relative;
+
+        & select{
+            width: 100%;
+            outline: none;
+            border: none;
+            background: none;
+            color: $quaternary-color;
+            // appearance: none;
+        }
+
+        & select option {
+            padding: 30px;
+            background: #16213e87;
+        }
+
+        &:hover {
+            box-shadow: 0 0 5pt 0.5pt #061741;
+            // box-shadow: 0 0 5pt 0.5pt #494444;
+        }
+
+        &:active {
+            box-shadow: 0 0 5pt 2pt #061741;
+            // outline-width: 0px;
+        }
+
+        // &::after{
+        //     content: '';
+        //     border-width: 5px;
+        //     border-style: solid;
+        //     border-color: transparent;
+        //     border-left-color: #222;
+        //     display: inline-block;
+        //     position: absolute;
+        //     right: 10px;
+        //     bottom: 10px;
+        // }
+    }
+
+    &_container {
+        width: 100%;
+        max-width: 800px;
+        max-height: 450px;
         // background: rgba(255, 255, 255, 0.398);
         @include flex-row-center;
         flex-wrap: wrap;
         padding: 10px 0;
         gap: 20px;
+        overflow-y: scroll;
+    }
+
+    &_loading{
+        width: 80%;
+        max-width: 900px;
+        @include center-perfect;
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: 2px;
+
     }
 }

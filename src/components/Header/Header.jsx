@@ -11,6 +11,7 @@ export const Header = () => {
                 <ul className="header_nav--ul">
                     <Link to="/home" className="header_nav--item"><li >Inicio</li></Link>
                     <Link to="/movies" className="header_nav--item"><li >Peliculas</li></Link>
+                    <Link to="/series" className="header_nav--item"><li >Series</li></Link>
                 </ul>
             </nav>
         </header>

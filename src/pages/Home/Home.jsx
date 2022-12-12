@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom"
 import { Header } from "../../components/Header/Header"
 import './styles.scss'
+
+
 export function Home() {
     return (
         <div className="home">
@@ -11,7 +14,8 @@ export function Home() {
 
                 <p className="home_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis odit quia cumque doloremque facilis iste nisi, vitae eos nam, officiis dolores dolorum quod tenetur maiores atque, nihil eveniet quae suscipit?</p>
 
-                <button className="home_btn">VER AHORA</button>
+                <Link to="/movies"> <button className="home_btn">VER AHORA</button></Link>
+               
 
             </div>
         </div>
