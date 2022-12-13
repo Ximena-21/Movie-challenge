@@ -9,54 +9,103 @@ import './styles.scss'
 export function Movies() {
 
     const [movies, setMovies] = useState([])
+    const [option, setOption] = useState('')
+    const [page, setPage] = useState(1)
 
-    async function getListMovies() {
-        const dataMovies = await getData('of the',1, 'movie')
+    async function getListMovies(filter, numberPage) {
+        const dataMovies = await getData(filter, numberPage, 'movie')
         setMovies(dataMovies);
     }
     useEffect(() => {
 
-        getListMovies()
+        const filterInit = dicOptions["Seleccione"]
+        setOption(filterInit)
+        getListMovies(filterInit, page)
 
     }, [])
 
-    console.log(movies);
+    const dicOptions = {
+        Seleccione: 'of the',
+        Romance: 'love',
+        Terror: 'demonic',
+        Navidad: 'christmas',
+        Halloween: 'halloween',
+        Heroes: 'man',
+        Harry: 'harry potter',
+        Marvel: 'marvel'
+    }
 
+
+    function handleOption(e) {
+
+        const filter = dicOptions[e.target.value]
+        setOption(filter)
+        setPage(1)
+        getListMovies(filter, 1)
+    }
+
+    function changeNextPage() {
+        if (page > 0) {
+
+            const newPage = page + 1
+            setPage(newPage)
+            getListMovies(option, newPage)
+        } else {
+            setPage(1)
+            getListMovies(option, 1)
+        }
+    }
+
+    function changeBackPage() {
+
+        if (page < 1) {
+            setPage(1)
+            getListMovies(option, 1)
+
+        } else {
+
+            const newPage = page - 1
+            setPage(newPage)
+            getListMovies(option, page)
+        }
+    }
 
     return (
         <div className="movies">
             <Header />
 
-            {/* <h2>movies</h2> */}
             <div className="movies_filter">
-                <select >
-                    <option >Filtrar</option>
-                    <option >Filtro 1</option>
-                    <option >Filtro 2</option>
+                <select value={option} onChange={handleOption}>
+                    <option >Seleccione</option>
+                    <option >Romance</option>
+                    <option >Terror</option>
+                    <option >Navidad</option>
+                    <option >Halloween</option>
+                    <option >Heroes</option>
+                    <option >Harry</option>
+                    <option >Marvel</option>
                 </select>
             </div>
 
             {
-                movies != []? 
-                (
-                    <div className="movies_container">
-                    {
-                        movies.map((movie) => {
-                            return (
-    
-                                <Card element={movie} />
-                            )
-                        })
-                    }
-                  </div>
-                ) 
-                : (<div className="movies_loading">Loading ... </div>)
-            }
-           
-            <Pagination/>
+                movies.length !== 0 ?
 
-            {/* <button onClick={getData}>peliculas</button> */}
-          
+                    <div className="movies_container">
+                        {
+                            movies.map((movie) => {
+                                return (
+
+                                    <Card element={movie} />
+                                )
+                            })
+                        }
+                    </div>
+
+                    : <div className="movies_loading">Loading ... </div>
+            }
+
+            <Pagination nextPage={changeNextPage} backPage={changeBackPage} />
+
         </div>
     )
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
 import './styles.scss'
+import poster from '../../assets/logo1.png'
 
 export function Card({ element }) {
 
@@ -11,7 +12,11 @@ export function Card({ element }) {
             <div className='card_front' onClick={() => setflip(!flip)}>
                 {/* FRONT
                 <h6 className="card_front--title">{element.Title}</h6> */}
-                <img className="card_front--img" src={element.Poster} />
+                {
+                    element.Poster === "N/A" ?
+                        <img className="card_front--img" src={poster} />
+                        : <img className="card_front--img" src={element.Poster} />
+                }
             </div>
             <div className='card_back' onClick={() => setflip(!flip)}>
 

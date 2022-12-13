@@ -5,7 +5,9 @@ import "./styles.scss"
 export const Header = () => {
     return (
         <header className="header">
-            <img src={logo} alt="logo" className="header_logo" />
+            <Link to="/home">
+                <img src={logo} alt="logo" className="header_logo" />
+            </Link>
 
             <nav className="header_nav">
                 <ul className="header_nav--ul">

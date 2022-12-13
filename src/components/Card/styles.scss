@@ -11,7 +11,7 @@
         width: 50%;
         min-width: 100px;
         max-width: 150px;
-        min-height: 120px;
+        min-height: 140px;
         max-height: 180px;
         @include center-perfect;
         // @include flex-column-center;
@@ -31,7 +31,7 @@
         width: 50%;
         min-width: 100px;
         max-width: 150px;
-        min-height: 120px;
+        min-height: 140px;
         max-height: 180px;
         @include flex-column-center;
         gap: 10px;

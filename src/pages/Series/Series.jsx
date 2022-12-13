@@ -8,18 +8,67 @@ import { getData } from "../../lib/request"
 export function Series() {
 
     const [series, setSeries] = useState([])
+    const [option, setOption] = useState('')
+    const [page, setPage] = useState(1)
 
-    async function getListSeries() {
-        const dataSeries = await getData('of the',1, 'series')
+    async function getListSeries(filter, numberPage) {
+        const dataSeries = await getData(filter, numberPage, 'series')
         setSeries(dataSeries);
     }
     useEffect(() => {
-
-        getListSeries()
+        const filterInit = dicOptions["Seleccione"]
+        setOption(filterInit)
+        getListSeries(filterInit, page)
 
     }, [])
 
     console.log(series);
+
+    const dicOptions = {
+        Seleccione: 'of the',
+        Romance: 'love',
+        Medicina: 'doctor',
+        Navidad: 'christmas',
+        // Halloween: 'halloween',
+        Heroes: 'man',
+        // Harry: 'harry potter',
+        // Marvel: 'marvel'
+    }
+
+    function handleOption(e) {
+
+        const filter = dicOptions[e.target.value]
+        setOption(filter)
+        setPage(1)
+        getListSeries(filter, 1)
+    }
+
+    function changeNextPage() {
+        if (page > 0) {
+
+            const newPage = page + 1
+            setPage(newPage)
+            getListSeries(option, newPage)
+        } else {
+            setPage(1)
+            getListSeries(option, 1)
+        }
+    }
+
+    function changeBackPage() {
+
+        if (page < 1) {
+            setPage(1)
+            getListSeries(option, 1)
+
+        } else {
+
+            const newPage = page - 1
+            setPage(newPage)
+            getListSeries(option, page)
+        }
+    }
+
 
 
     return (
@@ -28,34 +77,34 @@ export function Series() {
 
             {/* <h2>movies</h2> */}
             <div className="movies_filter">
-                <select >
-                    <option >Filtrar</option>
-                    <option >Filtro 1</option>
-                    <option >Filtro 2</option>
+                <select value={option} onChange={handleOption}>
+                    <option >Seleccione</option>
+                    <option >Romance</option>
+                    <option >Medicina</option>
+                    <option >Navidad</option>
+                    <option >Heroes</option>
                 </select>
             </div>
 
             {
-               series != []? 
-                (
-                    <div className="movies_container">
-                    {
-                       series.map((serie) => {
-                            return (
-    
-                                <Card element={serie} />
-                            )
-                        })
-                    }
-                  </div>
-                ) 
-                : (<div className="movies_loading">Loading ... </div>)
-            }
-           
-            <Pagination/>
+                series.length !== 0 ?
 
-            {/* <button onClick={getData}>peliculas</button> */}
-          
+                    <div className="movies_container">
+                        {
+                            series.map((serie) => {
+                                return (
+
+                                    <Card element={serie} />
+                                )
+                            })
+                        }
+                    </div>
+
+                    : <div className="movies_loading">Loading ... </div>
+            }
+
+            <Pagination nextPage={changeNextPage} backPage={changeBackPage}/>
+
         </div>
     )
 }
